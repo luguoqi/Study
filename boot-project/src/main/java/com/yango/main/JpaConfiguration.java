@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = true)
 @EnableJpaRepositories(basePackages = "com.yango.dao")
-@EntityScan(basePackages = "com.yango.bean")
+@EntityScan(basePackages = "com.yango.entity")
 public class JpaConfiguration {
     @Bean
     PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor(){

@@ -2,21 +2,28 @@
 spring:
   profiles:
     active: dev
-
+---
 #公共配置与profiles选择无关
 mybatis:
-  typeAliasesPackage: com.yango.entity
-  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.yango.entity
+  mapper-locations: classpath:com.yango.dao/*.xml
 
+server:
+  tomcat:
+    uri-encoding: utf-8
 
----
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
-#开发配置
-spring:
-  profiles: dev
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/demo
-    username: root
-    password: admin
-    driver-class-name: com.mysql.jdbc.Driver
+logging:
+  config: classpath:logback-dev.xml
+  level:
+    org:
+      springframework: INFO
+    com:
+      ibatis: DEBUG
+    com.datacloudsec.collector.object.repository.mapper: DEBUG

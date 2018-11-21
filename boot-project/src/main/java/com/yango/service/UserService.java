@@ -1,21 +1,12 @@
 package com.yango.service;
 
-import com.yango.bean.User;
-import com.yango.dao.UserRepositoty;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.github.pagehelper.PageInfo;
+import com.yango.entity.User;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    private UserRepositoty userRepositoty;
+    public User getUserById(int userId);
 
-    public User findUserByName(String name){
-        User user = null;
-        try{
-            user = userRepositoty.findByUserName(name);
-        }catch (Exception e){}
-        return user;
-    }
+    boolean addUser(User record);
+    public PageInfo<User> findAllUser(int pageNum, int pageSize);
 }
